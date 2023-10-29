@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  server:
+    container_name: server
+    build: ./Ex1
+    ports:
+      - 80:80
+    volumes:
+      - ./Ex1/resources:/var/www/html
+      - serverResults:/results
+
+    deploy:
+      resources:
+        limits:
+          cpus: "1"
+          memory: 1G
+        reservations:
+          cpus: "1"
+          memory: 1G
+
+volumes:
+  serverResults:
